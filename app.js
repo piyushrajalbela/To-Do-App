@@ -17,7 +17,10 @@ document.addEventListener("DOMContentLoaded",function(){
         progressBar.style.width = totalTasks > 0 ? `${(completedTasks/totalTasks)*100}%`:"0%";
 
         progressNumbers.textContent = `${completedTasks}/${totalTasks}`;
-
+         if(checkCompletion && totalTasks >0 && completedTasks === totalTasks) {
+        Confetti();
+    }
+    };
     const saveTaskToLocalStorage = () => {
       const tasks = Array.from(taskList.querySelectorAll("li")).map(li => ({
         text: li.querySelector("span").textContent,
@@ -32,10 +35,7 @@ document.addEventListener("DOMContentLoaded",function(){
       savedTasks.forEach(({text,completed}) => addTask(text,completed,false));
       updateProgress();
     };
-    if(checkCompletion && totalTasks >0 && completedTasks === totalTasks) {
-        Confetti();
-    }
-    };
+   
 
 document.addEventListener("mousemove", (e) => {
     cursor.style.left=e.pageX+"px";
