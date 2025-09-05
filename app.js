@@ -45,11 +45,10 @@ let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;  
     
     
-    if (window.matchMedia("(hover:none)and (pointer:coarse)" ).matches){
+    if (window.matchMedia("(hover:none) and (pointer:coarse)" ).matches){
       cursor.style.display="none";
-      return;
     }
-
+    else{
     document.addEventListener('mousemove', e => {
        
       mouseX = e.clientX;
@@ -76,7 +75,7 @@ let mouseX = 0, mouseY = 0;
       cursor.style.background =" #000";
     });
   }); 
-    
+    } 
     const addTask = (event) =>{
         event.preventDefault();
         const taskText = taskInput.value.trim();
